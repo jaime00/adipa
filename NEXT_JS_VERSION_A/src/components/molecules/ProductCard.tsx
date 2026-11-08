@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import Image from 'next/image'
 
 import { AnimatedIconButton } from '@/components/ui/animated-icon-button'
@@ -27,7 +27,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const hasDiscount = product.discountedPrice < product.originalPrice
 
   return (
-    <motion.div
+    <m.div
       layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -117,6 +117,6 @@ export function ProductCard({ product }: ProductCardProps) {
           </AnimatedIconButton>
         </div>
       </Card>
-    </motion.div>
+    </m.div>
   )
 }

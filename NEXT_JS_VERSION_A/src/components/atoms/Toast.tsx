@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { CircleCheck, X } from 'lucide-react'
 import { useEffect } from 'react'
 
@@ -28,7 +28,7 @@ export function Toast({
   return (
     <AnimatePresence>
       {visible && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 40, x: 20 }}
           animate={{ opacity: 1, y: 0, x: 0 }}
           exit={{ opacity: 0, y: 20 }}
@@ -46,7 +46,7 @@ export function Toast({
           >
             <X className="h-4 w-4" />
           </button>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

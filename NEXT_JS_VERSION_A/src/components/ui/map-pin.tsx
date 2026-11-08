@@ -1,12 +1,14 @@
 'use client'
 
 import type { Variants } from 'framer-motion'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface MapPinIconProps extends HTMLAttributes<HTMLDivElement> {
@@ -45,12 +47,13 @@ const CIRCLE_VARIANTS: Variants = {
 const MapPinIcon = forwardRef<AnimatedIconHandle, MapPinIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLDivElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => controls.start('animate'),
-      stopAnimation: () => controls.start('normal')
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLDivElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => controls.start('animate'),
+        stopAnimation: () => controls.start('normal')
+      })
 
     return (
       <div
@@ -59,7 +62,7 @@ const MapPinIcon = forwardRef<AnimatedIconHandle, MapPinIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        <motion.svg
+        <m.svg
           animate={controls}
           fill="none"
           height={size}
@@ -74,7 +77,7 @@ const MapPinIcon = forwardRef<AnimatedIconHandle, MapPinIconProps>(
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-          <motion.circle
+          <m.circle
             animate={controls}
             cx="12"
             cy="10"
@@ -82,7 +85,7 @@ const MapPinIcon = forwardRef<AnimatedIconHandle, MapPinIconProps>(
             r="3"
             variants={CIRCLE_VARIANTS}
           />
-        </motion.svg>
+        </m.svg>
       </div>
     )
   }

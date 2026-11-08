@@ -1,11 +1,12 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 import { AnimatedIconButton } from '@/components/ui/animated-icon-button'
 import { ArrowRightIcon } from '@/components/ui/arrow-right'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+
 import { scrollTo } from '@/lib/scrollTo'
 
 const stats = [
@@ -25,7 +26,7 @@ export function HeroSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 md:px-6 pb-10">
         <div className="pb-10 pt-24 md:pb-16 md:pt-36 lg:pt-40">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -77,10 +78,10 @@ export function HeroSection() {
                 Contattaci
               </Button>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
@@ -98,7 +99,7 @@ export function HeroSection() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

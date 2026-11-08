@@ -1,12 +1,14 @@
 'use client'
 
 import type { Variants } from 'framer-motion'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface LinkedinIconProps extends HTMLAttributes<HTMLDivElement> {
@@ -40,20 +42,21 @@ const LinkedinIcon = forwardRef<AnimatedIconHandle, LinkedinIconProps>(
     const pathControls = useAnimation()
     const rectControls = useAnimation()
     const circleControls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLDivElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => {
-        pathControls.start('animate')
-        rectControls.start('animate')
-        circleControls.start('animate')
-      },
-      stopAnimation: () => {
-        pathControls.start('normal')
-        rectControls.start('normal')
-        circleControls.start('normal')
-      }
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLDivElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => {
+          pathControls.start('animate')
+          rectControls.start('animate')
+          circleControls.start('animate')
+        },
+        stopAnimation: () => {
+          pathControls.start('normal')
+          rectControls.start('normal')
+          circleControls.start('normal')
+        }
+      })
 
     return (
       <div
@@ -73,13 +76,13 @@ const LinkedinIcon = forwardRef<AnimatedIconHandle, LinkedinIconProps>(
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.path
+          <m.path
             animate={pathControls}
             d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
             initial="normal"
             variants={DRAW_VARIANTS}
           />
-          <motion.rect
+          <m.rect
             animate={rectControls}
             height="12"
             initial="normal"
@@ -88,7 +91,7 @@ const LinkedinIcon = forwardRef<AnimatedIconHandle, LinkedinIconProps>(
             x="2"
             y="9"
           />
-          <motion.circle
+          <m.circle
             animate={circleControls}
             cx="4"
             cy="4"

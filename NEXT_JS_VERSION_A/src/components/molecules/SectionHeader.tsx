@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 import { durationDefault, fadeUp, viewportOnce } from '@/lib/motion'
 
@@ -10,9 +10,13 @@ interface SectionHeaderProps {
   description: string
 }
 
-export function SectionHeader({ label, title, description }: SectionHeaderProps) {
+export function SectionHeader({
+  label,
+  title,
+  description
+}: SectionHeaderProps) {
   return (
-    <motion.div
+    <m.div
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -29,6 +33,6 @@ export function SectionHeader({ label, title, description }: SectionHeaderProps)
       <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
         {description}
       </p>
-    </motion.div>
+    </m.div>
   )
 }

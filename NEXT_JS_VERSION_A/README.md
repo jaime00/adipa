@@ -76,12 +76,12 @@ src/
 
 ## Identidad visual
 
-| Token    | Color   | Uso                        |
-| -------- | ------- | -------------------------- |
-| Primario | #1B4F8A | Botones, links, titulos    |
-| Texto    | #0F2D52 | Texto principal            |
-| Acento   | #0EA5E9 | Focus rings, highlights    |
-| Fondo    | #EFF6FF | Background general         |
+| Token    | Color   | Uso                     |
+| -------- | ------- | ----------------------- |
+| Primario | #1B4F8A | Botones, links, titulos |
+| Texto    | #0F2D52 | Texto principal         |
+| Acento   | #0EA5E9 | Focus rings, highlights |
+| Fondo    | #EFF6FF | Background general      |
 
 ## Supuestos
 

@@ -1,12 +1,14 @@
 'use client'
 
 import type { Variants } from 'framer-motion'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface FacebookIconProps extends HTMLAttributes<HTMLDivElement> {
@@ -38,12 +40,13 @@ const FACEBOOK_VARIANTS: Variants = {
 const FacebookIcon = forwardRef<AnimatedIconHandle, FacebookIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLDivElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => controls.start('animate'),
-      stopAnimation: () => controls.start('normal')
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLDivElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => controls.start('animate'),
+        stopAnimation: () => controls.start('normal')
+      })
 
     return (
       <div
@@ -63,7 +66,7 @@ const FacebookIcon = forwardRef<AnimatedIconHandle, FacebookIconProps>(
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.path
+          <m.path
             animate={controls}
             d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
             initial="normal"

@@ -1,12 +1,14 @@
 'use client'
 
 import type { Variants } from 'framer-motion'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface PhoneIconProps extends HTMLAttributes<HTMLSpanElement> {
@@ -31,12 +33,13 @@ const PHONE_VARIANTS: Variants = {
 const PhoneIcon = forwardRef<AnimatedIconHandle, PhoneIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLSpanElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => controls.start('animate'),
-      stopAnimation: () => controls.start('normal')
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLSpanElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => controls.start('animate'),
+        stopAnimation: () => controls.start('normal')
+      })
 
     return (
       <span
@@ -45,7 +48,7 @@ const PhoneIcon = forwardRef<AnimatedIconHandle, PhoneIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        <motion.svg
+        <m.svg
           animate={controls}
           fill="none"
           height={size}
@@ -60,7 +63,7 @@ const PhoneIcon = forwardRef<AnimatedIconHandle, PhoneIconProps>(
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
-        </motion.svg>
+        </m.svg>
       </span>
     )
   }

@@ -1,5 +1,6 @@
 'use client'
 
+import { LazyMotion, MotionConfig, domAnimation } from 'framer-motion'
 import { useState } from 'react'
 
 import { ContactForm } from '@/components/organisms/ContactForm'
@@ -12,14 +13,16 @@ export function LandingTemplate() {
   const [searchQuery, setSearchQuery] = useState('')
 
   return (
-    <>
-      <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
-      <main>
-        <HeroSection />
-        <ProductGrid searchQuery={searchQuery} />
-        <ContactForm />
-      </main>
-      <Footer />
-    </>
+    <MotionConfig reducedMotion="user">
+      <LazyMotion features={domAnimation}>
+        <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+        <main>
+          <HeroSection />
+          <ProductGrid searchQuery={searchQuery} />
+          <ContactForm />
+        </main>
+        <Footer />
+      </LazyMotion>
+    </MotionConfig>
   )
 }

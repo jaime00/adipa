@@ -12,10 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html
-      lang="it"
-      className="h-full antialiased"
-    >
+    <html lang="it" className="h-full antialiased">
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <TooltipProvider>{children}</TooltipProvider>
       </body>

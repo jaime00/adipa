@@ -1,12 +1,14 @@
 'use client'
 
 import type { Variants } from 'framer-motion'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface UserIconProps extends HTMLAttributes<HTMLDivElement> {
@@ -38,12 +40,13 @@ const CIRCLE_VARIANT: Variants = {
 const UserIcon = forwardRef<AnimatedIconHandle, UserIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLDivElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => controls.start('animate'),
-      stopAnimation: () => controls.start('normal')
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLDivElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => controls.start('animate'),
+        stopAnimation: () => controls.start('normal')
+      })
 
     return (
       <div
@@ -63,7 +66,7 @@ const UserIcon = forwardRef<AnimatedIconHandle, UserIconProps>(
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.circle
+          <m.circle
             animate={controls}
             cx="12"
             cy="8"
@@ -71,7 +74,7 @@ const UserIcon = forwardRef<AnimatedIconHandle, UserIconProps>(
             variants={CIRCLE_VARIANT}
           />
 
-          <motion.path
+          <m.path
             animate={controls}
             d="M20 21a8 8 0 0 0-16 0"
             transition={{

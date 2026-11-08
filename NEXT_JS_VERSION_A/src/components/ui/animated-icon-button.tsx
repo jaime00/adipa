@@ -4,6 +4,7 @@ import type { ComponentProps, Ref } from 'react'
 import { useRef } from 'react'
 
 import { Button } from '@/components/ui/button'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface AnimatedIconButtonProps extends ComponentProps<typeof Button> {

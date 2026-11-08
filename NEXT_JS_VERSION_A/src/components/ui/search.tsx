@@ -1,11 +1,13 @@
 'use client'
 
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface SearchIconProps extends HTMLAttributes<HTMLDivElement> {
@@ -15,12 +17,13 @@ interface SearchIconProps extends HTMLAttributes<HTMLDivElement> {
 const SearchIcon = forwardRef<AnimatedIconHandle, SearchIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLDivElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => controls.start('animate'),
-      stopAnimation: () => controls.start('normal')
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLDivElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => controls.start('animate'),
+        stopAnimation: () => controls.start('normal')
+      })
 
     return (
       <div
@@ -29,7 +32,7 @@ const SearchIcon = forwardRef<AnimatedIconHandle, SearchIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        <motion.svg
+        <m.svg
           animate={controls}
           fill="none"
           height={size}
@@ -54,7 +57,7 @@ const SearchIcon = forwardRef<AnimatedIconHandle, SearchIconProps>(
         >
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.3-4.3" />
-        </motion.svg>
+        </m.svg>
       </div>
     )
   }

@@ -1,12 +1,14 @@
 'use client'
 
 import type { Variants } from 'framer-motion'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface MenuIconProps extends HTMLAttributes<HTMLDivElement> {
@@ -34,12 +36,13 @@ const LINE_VARIANTS: Variants = {
 const MenuIcon = forwardRef<AnimatedIconHandle, MenuIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLDivElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => controls.start('animate'),
-      stopAnimation: () => controls.start('normal')
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLDivElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => controls.start('animate'),
+        stopAnimation: () => controls.start('normal')
+      })
 
     return (
       <div
@@ -59,7 +62,7 @@ const MenuIcon = forwardRef<AnimatedIconHandle, MenuIconProps>(
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.line
+          <m.line
             animate={controls}
             custom={1}
             initial="normal"
@@ -69,7 +72,7 @@ const MenuIcon = forwardRef<AnimatedIconHandle, MenuIconProps>(
             y1="6"
             y2="6"
           />
-          <motion.line
+          <m.line
             animate={controls}
             custom={2}
             initial="normal"
@@ -79,7 +82,7 @@ const MenuIcon = forwardRef<AnimatedIconHandle, MenuIconProps>(
             y1="12"
             y2="12"
           />
-          <motion.line
+          <m.line
             animate={controls}
             custom={3}
             initial="normal"

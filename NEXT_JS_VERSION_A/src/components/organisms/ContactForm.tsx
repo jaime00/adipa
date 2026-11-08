@@ -1,17 +1,11 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { useCallback } from 'react'
 
 import { Toast } from '@/components/atoms/Toast'
 import { ContactInfoItem } from '@/components/molecules/ContactInfoItem'
 import { SectionHeader } from '@/components/molecules/SectionHeader'
-import {
-  durationDefault,
-  slideLeft,
-  slideRight,
-  viewportOnceNear
-} from '@/lib/motion'
 import { AnimatedIconButton } from '@/components/ui/animated-icon-button'
 import {
   Card,
@@ -35,6 +29,13 @@ import { Textarea } from '@/components/ui/textarea'
 
 import { useContactForm } from '@/hooks/useContactForm'
 
+import {
+  durationDefault,
+  slideLeft,
+  slideRight,
+  viewportOnceNear
+} from '@/lib/motion'
+
 export function ContactForm() {
   const { formData, errors, status, updateField, handleSubmit, reset } =
     useContactForm()
@@ -54,7 +55,7 @@ export function ContactForm() {
         />
 
         <div className="mt-14 grid gap-8 md:grid-cols-2 items-stretch">
-          <motion.div
+          <m.div
             className="h-full"
             variants={slideLeft}
             initial="hidden"
@@ -163,9 +164,9 @@ export function ContactForm() {
               visible={showToast}
               onClose={handleToastClose}
             />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className="flex h-full flex-col gap-6"
             variants={slideRight}
             initial="hidden"
@@ -207,9 +208,10 @@ export function ContactForm() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts"
               />
             </Card>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

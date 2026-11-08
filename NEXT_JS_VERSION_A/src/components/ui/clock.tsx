@@ -1,12 +1,14 @@
 'use client'
 
 import type { Transition, Variants } from 'framer-motion'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface ClockIconProps extends HTMLAttributes<HTMLDivElement> {
@@ -52,12 +54,13 @@ const MINUTE_HAND_VARIANTS: Variants = {
 const ClockIcon = forwardRef<AnimatedIconHandle, ClockIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLDivElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => controls.start('animate'),
-      stopAnimation: () => controls.start('normal')
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLDivElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => controls.start('animate'),
+        stopAnimation: () => controls.start('normal')
+      })
 
     return (
       <div
@@ -78,7 +81,7 @@ const ClockIcon = forwardRef<AnimatedIconHandle, ClockIconProps>(
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle cx="12" cy="12" r="10" />
-          <motion.line
+          <m.line
             animate={controls}
             initial="normal"
             transition={HAND_TRANSITION}
@@ -88,7 +91,7 @@ const ClockIcon = forwardRef<AnimatedIconHandle, ClockIconProps>(
             y1="12"
             y2="6"
           />
-          <motion.line
+          <m.line
             animate={controls}
             initial="normal"
             transition={MINUTE_HAND_TRANSITION}

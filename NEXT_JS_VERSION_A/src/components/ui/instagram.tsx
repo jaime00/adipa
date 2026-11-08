@@ -1,12 +1,14 @@
 'use client'
 
 import type { Variants } from 'framer-motion'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface InstagramIconProps extends HTMLAttributes<HTMLDivElement> {
@@ -40,20 +42,21 @@ const InstagramIcon = forwardRef<AnimatedIconHandle, InstagramIconProps>(
     const rectControls = useAnimation()
     const pathControls = useAnimation()
     const lineControls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLDivElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => {
-        rectControls.start('animate')
-        pathControls.start('animate')
-        lineControls.start('animate')
-      },
-      stopAnimation: () => {
-        rectControls.start('normal')
-        pathControls.start('normal')
-        lineControls.start('normal')
-      }
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLDivElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => {
+          rectControls.start('animate')
+          pathControls.start('animate')
+          lineControls.start('animate')
+        },
+        stopAnimation: () => {
+          rectControls.start('normal')
+          pathControls.start('normal')
+          lineControls.start('normal')
+        }
+      })
 
     return (
       <div
@@ -73,7 +76,7 @@ const InstagramIcon = forwardRef<AnimatedIconHandle, InstagramIconProps>(
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.rect
+          <m.rect
             animate={rectControls}
             height="20"
             initial="normal"
@@ -84,13 +87,13 @@ const InstagramIcon = forwardRef<AnimatedIconHandle, InstagramIconProps>(
             x="2"
             y="2"
           />
-          <motion.path
+          <m.path
             animate={pathControls}
             d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
             initial="normal"
             variants={DRAW_VARIANTS}
           />
-          <motion.line
+          <m.line
             animate={lineControls}
             initial="normal"
             variants={DRAW_VARIANTS}

@@ -1,12 +1,14 @@
 'use client'
 
 import type { Variants } from 'framer-motion'
-import { motion, useAnimation } from 'framer-motion'
+import { m, useAnimation } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 
 import { useAnimatedIcon } from '@/hooks/useAnimatedIcon'
+
 import { cn } from '@/lib/utils'
+
 import type { AnimatedIconHandle } from '@/types/icon'
 
 interface ArrowRightIconProps extends HTMLAttributes<HTMLDivElement> {
@@ -37,12 +39,13 @@ const SECONDARY_PATH_VARIANTS: Variants = {
 const ArrowRightIcon = forwardRef<AnimatedIconHandle, ArrowRightIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation()
-    const { handleMouseEnter, handleMouseLeave } = useAnimatedIcon<HTMLDivElement>(ref, {
-      onMouseEnter,
-      onMouseLeave,
-      startAnimation: () => controls.start('animate'),
-      stopAnimation: () => controls.start('normal')
-    })
+    const { handleMouseEnter, handleMouseLeave } =
+      useAnimatedIcon<HTMLDivElement>(ref, {
+        onMouseEnter,
+        onMouseLeave,
+        startAnimation: () => controls.start('animate'),
+        stopAnimation: () => controls.start('normal')
+      })
 
     return (
       <div
@@ -62,12 +65,8 @@ const ArrowRightIcon = forwardRef<AnimatedIconHandle, ArrowRightIconProps>(
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.path
-            animate={controls}
-            d="M5 12h14"
-            variants={PATH_VARIANTS}
-          />
-          <motion.path
+          <m.path animate={controls} d="M5 12h14" variants={PATH_VARIANTS} />
+          <m.path
             animate={controls}
             d="m12 5 7 7-7 7"
             variants={SECONDARY_PATH_VARIANTS}

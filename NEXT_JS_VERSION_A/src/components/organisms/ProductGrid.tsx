@@ -1,15 +1,16 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 
 import { ProductCard } from '@/components/molecules/ProductCard'
 import { SectionHeader } from '@/components/molecules/SectionHeader'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { fadeUp, viewportOnceNear } from '@/lib/motion'
 
 import { categories } from '@/data/products'
 
 import { useProductFilter } from '@/hooks/useProductFilter'
+
+import { fadeUp, viewportOnceNear } from '@/lib/motion'
 
 import type { CategorySlug } from '@/types/product'
 
@@ -30,7 +31,7 @@ export function ProductGrid({ searchQuery }: ProductGridProps) {
           description="Esplora la selezione di test psicologici e corsi di formazione accreditati per professionisti"
         />
 
-        <motion.div
+        <m.div
           className="mt-10 flex justify-center"
           variants={fadeUp}
           initial="hidden"
@@ -59,7 +60,7 @@ export function ProductGrid({ searchQuery }: ProductGridProps) {
               ))}
             </TabsList>
           </Tabs>
-        </motion.div>
+        </m.div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
@@ -70,13 +71,13 @@ export function ProductGrid({ searchQuery }: ProductGridProps) {
         </div>
 
         {filteredProducts.length === 0 && (
-          <motion.p
+          <m.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="mt-16 text-center text-muted-foreground"
           >
             Nessun prodotto trovato. Prova a modificare i filtri o la ricerca.
-          </motion.p>
+          </m.p>
         )}
       </div>
     </section>

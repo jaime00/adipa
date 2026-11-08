@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { useRef, useState } from 'react'
 
 import { Logo } from '@/components/atoms/Logo'
@@ -22,6 +22,7 @@ import {
 import { UserIcon } from '@/components/ui/user'
 
 import { useNavActive } from '@/hooks/useNavActive'
+
 import { springSnappy } from '@/lib/motion'
 import { scrollTo } from '@/lib/scrollTo'
 
@@ -67,7 +68,7 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
               >
                 {link.label}
                 {isActive && (
-                  <motion.span
+                  <m.span
                     layoutId="nav-indicator"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gp-accent"
                     transition={springSnappy}
