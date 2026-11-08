@@ -1,0 +1,173 @@
+import type { Category, Product } from '@/types/product'
+
+export const categories: Category[] = [
+  { slug: 'tutti', label: 'Tutti' },
+  { slug: 'clinica-neuropsicologia', label: 'Clinica e Neuropsicologia' },
+  { slug: 'scuola-eta-evolutiva', label: 'Scuola ed Eta Evolutiva' },
+  { slug: 'lavoro-organizzazioni', label: 'Lavoro e Organizzazioni' },
+  { slug: 'formazione', label: 'Formazione' }
+]
+
+export const products: Product[] = [
+  {
+    id: 1,
+    name: 'Scala di Valutazione Cognitiva Integrata',
+    author: 'Dr. Marco Bianchi',
+    category: 'clinica-neuropsicologia',
+    ageRange: '16-90 anni',
+    originalPrice: 18500,
+    discountedPrice: 14800,
+    format: 'Cartaceo',
+    imageUrl:
+      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop',
+    imageAlt: 'Strumenti di valutazione cognitiva in ambiente clinico',
+    description:
+      'Batteria completa per la valutazione delle funzioni cognitive superiori, inclusi memoria, attenzione e funzioni esecutive.',
+    rating: 4.8,
+    reviewCount: 124,
+    tag: 'Bestseller'
+  },
+  {
+    id: 2,
+    name: "Batteria per l'Analisi della Memoria Operativa",
+    author: 'Prof.ssa Elena Rossi',
+    category: 'clinica-neuropsicologia',
+    ageRange: '18-75 anni',
+    originalPrice: 22000,
+    discountedPrice: 17600,
+    format: 'Digitale',
+    imageUrl:
+      'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=400&fit=crop',
+    imageAlt: 'Interfaccia digitale per test di memoria operativa',
+    description:
+      "Strumento digitale avanzato per l'analisi approfondita della memoria di lavoro verbale e visuospaziale.",
+    rating: 4.5,
+    reviewCount: 89
+  },
+  {
+    id: 3,
+    name: 'Questionario di Sviluppo Emotivo Infantile',
+    author: 'Dr.ssa Laura Verdi',
+    category: 'scuola-eta-evolutiva',
+    ageRange: '3-12 anni',
+    originalPrice: 12000,
+    discountedPrice: 9600,
+    format: 'Cartaceo',
+    imageUrl:
+      'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop',
+    imageAlt: 'Bambini in ambiente scolastico durante attivita educative',
+    description:
+      'Questionario standardizzato per la valutazione dello sviluppo emotivo e sociale nei bambini in eta scolare.',
+    rating: 4.6,
+    reviewCount: 73,
+    tag: 'Bestseller'
+  },
+  {
+    id: 4,
+    name: 'Test di Competenze Linguistiche Precoci',
+    author: 'Prof. Giovanni Neri',
+    category: 'scuola-eta-evolutiva',
+    ageRange: '2-6 anni',
+    originalPrice: 15500,
+    discountedPrice: 12400,
+    format: 'Digitale',
+    imageUrl:
+      'https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&h=400&fit=crop',
+    imageAlt: 'Bambino interagisce con strumenti linguistici digitali',
+    description:
+      'Test digitale interattivo per la valutazione precoce delle competenze linguistiche e comunicative.',
+    rating: 4.3,
+    reviewCount: 41,
+    tag: 'Novità'
+  },
+  {
+    id: 5,
+    name: 'Inventario di Personalita per il Lavoro',
+    author: 'Dr. Alessandro Conti',
+    category: 'lavoro-organizzazioni',
+    ageRange: '21-65 anni',
+    originalPrice: 28000,
+    discountedPrice: 22400,
+    format: 'Cartaceo',
+    imageUrl:
+      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop',
+    imageAlt: 'Professionisti in ambiente lavorativo durante valutazione',
+    description:
+      'Inventario completo dei tratti di personalita rilevanti per la selezione e lo sviluppo professionale.',
+    rating: 4.7,
+    reviewCount: 96
+  },
+  {
+    id: 6,
+    name: 'Strumento di Analisi del Clima Aziendale',
+    author: 'Prof.ssa Chiara Moretti',
+    category: 'lavoro-organizzazioni',
+    ageRange: 'Organizzazioni',
+    originalPrice: 35000,
+    discountedPrice: 28000,
+    format: 'Digitale',
+    imageUrl:
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
+    imageAlt: 'Team aziendale in riunione per analisi organizzativa',
+    description:
+      "Piattaforma digitale per l'analisi multidimensionale del clima organizzativo e della soddisfazione lavorativa.",
+    rating: 4.4,
+    reviewCount: 58,
+    tag: 'Novità'
+  },
+  {
+    id: 7,
+    name: 'Corso: Tecniche Avanzate di Psicodiagnosi',
+    author: 'Prof. Roberto Ferrara',
+    category: 'formazione',
+    ageRange: 'Professionisti',
+    startDate: '15 Marzo 2025',
+    originalPrice: 45000,
+    discountedPrice: 36000,
+    format: 'Corso online',
+    imageUrl:
+      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop',
+    imageAlt: 'Aula di formazione online per professionisti della psicologia',
+    description:
+      'Corso avanzato sulle tecniche di psicodiagnosi clinica, con focus su interpretazione e refertazione.',
+    rating: 4.9,
+    reviewCount: 156,
+    tag: 'Bestseller'
+  },
+  {
+    id: 8,
+    name: 'Corso: Gestione dello Stress Lavorativo',
+    author: 'Dr.ssa Francesca Ricci',
+    category: 'formazione',
+    ageRange: 'Professionisti',
+    startDate: '10 Aprile 2025',
+    originalPrice: 52000,
+    discountedPrice: 41600,
+    format: 'In presenza',
+    imageUrl:
+      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=400&fit=crop',
+    imageAlt: 'Workshop in presenza sulla gestione dello stress',
+    description:
+      'Workshop intensivo sulle strategie evidence-based per la prevenzione e gestione dello stress in ambito lavorativo.',
+    rating: 4.2,
+    reviewCount: 34
+  },
+  {
+    id: 9,
+    name: 'Scala di Resilienza e Adattamento Psicologico',
+    author: 'Dr. Paolo Lombardi',
+    category: 'clinica-neuropsicologia',
+    ageRange: '14-80 anni',
+    originalPrice: 16000,
+    discountedPrice: 12800,
+    format: 'Digitale',
+    imageUrl:
+      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop',
+    imageAlt: 'Persona completando questionario psicologico digitale',
+    description:
+      'Scala validata per la misurazione della resilienza psicologica e delle capacita di adattamento allo stress.',
+    rating: 4.1,
+    reviewCount: 47,
+    tag: 'Novità'
+  }
+]
