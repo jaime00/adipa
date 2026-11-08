@@ -2,7 +2,7 @@
 
 import { AnimatePresence, m } from 'framer-motion'
 import { CircleCheck, X } from 'lucide-react'
-import { useEffect } from 'react'
+import { useTimeout } from 'usehooks-ts'
 
 import { springSnappy } from '@/lib/motion'
 
@@ -19,11 +19,7 @@ export function Toast({
   onClose,
   duration = 4000
 }: ToastProps) {
-  useEffect(() => {
-    if (!visible) return
-    const timer = setTimeout(onClose, duration)
-    return () => clearTimeout(timer)
-  }, [visible, onClose, duration])
+  useTimeout(onClose, visible ? duration : null)
 
   return (
     <AnimatePresence>

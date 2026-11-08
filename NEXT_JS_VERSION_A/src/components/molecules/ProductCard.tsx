@@ -21,9 +21,10 @@ const formatColors: Record<ProductFormat, string> = {
 
 interface ProductCardProps {
   product: Product
+  priority?: boolean
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, priority = false }: ProductCardProps) {
   const hasDiscount = product.discountedPrice < product.originalPrice
 
   return (
@@ -34,7 +35,7 @@ export function ProductCard({ product }: ProductCardProps) {
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="group flex flex-col h-full p-4 gap-4 transition-shadow duration-300 hover:shadow-card-hover">
+      <Card className="group flex flex-col h-full min-w-[360px] p-4 gap-4 transition-shadow duration-300 hover:shadow-card-hover">
         <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
           <Image
             src={product.imageUrl}
@@ -42,6 +43,7 @@ export function ProductCard({ product }: ProductCardProps) {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
             className="object-cover"
+            priority={priority}
           />
         </div>
 
@@ -96,7 +98,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
 
-        <div className="flex items-center justify-between pt-2">
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
           <div className="flex items-baseline gap-2">
             <span className="text-lg font-bold text-foreground">
               {formatPrice(product.discountedPrice)}

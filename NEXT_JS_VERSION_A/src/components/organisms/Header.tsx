@@ -1,7 +1,8 @@
 'use client'
 
 import { m } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import { useBoolean, useHover, useMediaQuery } from 'usehooks-ts'
 
 import { Logo } from '@/components/atoms/Logo'
 import { ScrollProgress } from '@/components/atoms/ScrollProgress'
@@ -39,11 +40,30 @@ interface HeaderProps {
 }
 
 export function Header({ searchQuery, onSearchChange }: HeaderProps) {
-  const [sheetOpen, setSheetOpen] = useState(false)
+  const {
+    value: sheetOpen,
+    setValue: setSheetOpen,
+    setFalse: closeSheet
+  } = useBoolean(false)
   const searchIconRef = useRef<SearchIconHandle>(null)
+  const searchWrapperRef = useRef<HTMLDivElement>(null!)
+  const isSearchHovered = useHover(searchWrapperRef)
+  const isDesktop = useMediaQuery('(min-width: 768px)')
   const activeId = useNavActive(
     navLinks.map((l) => l.sectionId).filter(Boolean)
   )
+
+  useEffect(() => {
+    if (isDesktop && sheetOpen) closeSheet()
+  }, [isDesktop, sheetOpen, closeSheet])
+
+  useEffect(() => {
+    if (isSearchHovered) {
+      searchIconRef.current?.startAnimation()
+    } else {
+      searchIconRef.current?.stopAnimation()
+    }
+  }, [isSearchHovered])
 
   return (
     <header className="sticky top-0 z-50 border-b bg-card/95 backdrop-blur-sm relative">
@@ -65,6 +85,15 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
                 href={link.href}
                 className="relative px-3 py-1.5 text-sm font-medium transition-colors text-muted-foreground hover:text-foreground data-[active=true]:text-foreground"
                 data-active={isActive}
+                onClick={
+                  link.sectionId === 'test'
+                    ? (e: React.MouseEvent) => {
+                        e.preventDefault()
+                        window.history.pushState(null, '', '/')
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      }
+                    : undefined
+                }
               >
                 {link.label}
                 {isActive && (
@@ -80,11 +109,7 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <div
-            className="relative"
-            onMouseEnter={() => searchIconRef.current?.startAnimation()}
-            onMouseLeave={() => searchIconRef.current?.stopAnimation()}
-          >
+          <div ref={searchWrapperRef} className="relative">
             <SearchIcon
               ref={searchIconRef}
               className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
@@ -127,7 +152,9 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
               />
             }
           >
-            <MenuIcon className="size-5" />
+            <div className="">
+              <MenuIcon className="size-5 flex justify-center items-center" />
+            </div>
           </SheetTrigger>
           <SheetContent side="left" className="w-72">
             <SheetHeader>
@@ -136,11 +163,7 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
               </SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-4 px-4">
-              <div
-                className="relative"
-                onMouseEnter={() => searchIconRef.current?.startAnimation()}
-                onMouseLeave={() => searchIconRef.current?.stopAnimation()}
-              >
+              <div className="relative">
                 <SearchIcon
                   ref={searchIconRef}
                   className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
@@ -161,7 +184,14 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
                   <a
                     key={link.label}
                     href={link.href}
-                    onClick={() => setSheetOpen(false)}
+                    onClick={(e) => {
+                      if (link.sectionId === 'test') {
+                        e.preventDefault()
+                        window.history.pushState(null, '', '/')
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      }
+                      closeSheet()
+                    }}
                     className="rounded-md px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                   >
                     {link.label}

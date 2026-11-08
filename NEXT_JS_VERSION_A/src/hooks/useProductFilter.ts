@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useDebounceValue } from 'usehooks-ts'
 
 import { products } from '@/data/products'
 
@@ -8,14 +9,18 @@ import type { CategorySlug } from '@/types/product'
 
 export function useProductFilter(searchQuery: string) {
   const [activeCategory, setActiveCategory] = useState<CategorySlug>('tutti')
+  const [debouncedQuery] = useDebounceValue(searchQuery, 300)
+
+  const effectiveCategory = debouncedQuery.trim() ? 'tutti' : activeCategory
 
   const filteredProducts = useMemo(() => {
-    const query = searchQuery.toLowerCase().trim()
+    const query = debouncedQuery.toLowerCase().trim()
 
     return products
       .filter((product) => {
         const matchesCategory =
-          activeCategory === 'tutti' || product.category === activeCategory
+          effectiveCategory === 'tutti' ||
+          product.category === effectiveCategory
 
         const matchesSearch =
           !query ||
@@ -31,7 +36,11 @@ export function useProductFilter(searchQuery: string) {
         const bIsBestseller = b.tag === 'Bestseller' ? 0 : 1
         return aIsBestseller - bIsBestseller
       })
-  }, [activeCategory, searchQuery])
+  }, [effectiveCategory, debouncedQuery])
 
-  return { filteredProducts, activeCategory, setActiveCategory }
+  return {
+    filteredProducts,
+    activeCategory: effectiveCategory,
+    setActiveCategory
+  }
 }

@@ -1,6 +1,7 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
+import { useEventCallback } from 'usehooks-ts'
 
 import type { ContactFormData, FormStatus } from '@/types/form'
 
@@ -43,15 +44,14 @@ export function useContactForm() {
   const [errors, setErrors] = useState<FormErrors>({})
   const [status, setStatus] = useState<FormStatus>('idle')
 
-  const updateField = useCallback(
+  const updateField = useEventCallback(
     (field: keyof ContactFormData, value: string) => {
       setFormData((prev) => ({ ...prev, [field]: value }))
       setErrors((prev) => ({ ...prev, [field]: undefined }))
-    },
-    []
+    }
   )
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useEventCallback(() => {
     const validationErrors = validate(formData)
 
     if (Object.keys(validationErrors).length > 0) {
@@ -67,13 +67,13 @@ export function useContactForm() {
       setFormData({ name: '', email: '', message: '' })
       setErrors({})
     }, 1000)
-  }, [formData])
+  })
 
-  const reset = useCallback(() => {
+  const reset = useEventCallback(() => {
     setStatus('idle')
     setFormData({ name: '', email: '', message: '' })
     setErrors({})
-  }, [])
+  })
 
   return { formData, errors, status, updateField, handleSubmit, reset }
 }

@@ -1,11 +1,15 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useIsClient } from 'usehooks-ts'
 
 export function useNavActive(sectionIds: string[]) {
   const [activeId, setActiveId] = useState('')
+  const isClient = useIsClient()
 
   useEffect(() => {
+    if (!isClient) return
+
     const visibleSections = new Set<string>()
 
     const observer = new IntersectionObserver(
@@ -34,7 +38,7 @@ export function useNavActive(sectionIds: string[]) {
     }
 
     return () => observer.disconnect()
-  }, [sectionIds])
+  }, [sectionIds, isClient])
 
   return activeId
 }

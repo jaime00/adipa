@@ -9,7 +9,11 @@ interface LogoProps {
 
 export function Logo({ className }: LogoProps) {
   return (
-    <Link href="/" className={cn(className)}>
+    <Link
+      href="/"
+      className={cn(className)}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    >
       <Image
         src="https://www.giuntipsy.com/it-it/media/logo/default/Logo_Color_RGB-2026.png"
         alt="Giunti Psychometrics"
