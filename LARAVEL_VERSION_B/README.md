@@ -2,6 +2,10 @@
 
 Landing page de catálogo de productos psicométricos para Giunti Psychometrics Italia, construida con Laravel 9, Blade, Stylus, jQuery y Laravel Mix.
 
+## Deploy
+
+Desplegado en **Railway**: [https://adipa-production.up.railway.app/](https://adipa-production.up.railway.app/)
+
 ## Requisitos previos
 
 - **PHP** >= 8.0.2
@@ -116,12 +120,12 @@ Los productos se definen en `config/products.php` (9 productos ficticios en 4 ca
 
 ## Identidad visual
 
-| Token | Valor |
-|-------|-------|
-| Primario | `#1B4F8A` |
-| Texto | `#0F2D52` |
-| Acento | `#0EA5E9` |
-| Fondo | `#EFF6FF` |
+| Token | Color | Uso |
+|-------|-------|-----|
+| Primario | `#1B4F8A` | Botones, links, títulos |
+| Texto | `#0F2D52` | Texto principal |
+| Acento | `#0EA5E9` | Focus rings, highlights |
+| Fondo | `#EFF6FF` | Background general |
 
 ## Supuestos y decisiones
 
