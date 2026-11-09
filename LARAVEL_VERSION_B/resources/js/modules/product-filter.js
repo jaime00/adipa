@@ -34,20 +34,17 @@ $(function () {
 
     // Search input with debounce
     $desktopSearch.on('input', function () {
+        if ($(this).val() && activeCategory !== 'tutti') {
+            activeCategory = 'tutti';
+            $tabs.removeClass('product-grid__tab--active').attr('aria-selected', 'false');
+            $tabs.filter('[data-category="tutti"]').addClass('product-grid__tab--active').attr('aria-selected', 'true');
+        }
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(filterProducts, 300);
     });
 
     function filterProducts() {
         var query = $desktopSearch.val().toLowerCase().trim();
-
-        // Auto-reset to "tutti" when searching
-        var effectiveCategory = query ? 'tutti' : activeCategory;
-
-        if (query) {
-            $tabs.removeClass('product-grid__tab--active').attr('aria-selected', 'false');
-            $tabs.filter('[data-category="tutti"]').addClass('product-grid__tab--active').attr('aria-selected', 'true');
-        }
 
         var visible = [];
 
@@ -56,7 +53,7 @@ $(function () {
             var cardCategory = $card.data('category');
             var searchable = $card.data('searchable');
 
-            var matchesCategory = effectiveCategory === 'tutti' || cardCategory === effectiveCategory;
+            var matchesCategory = activeCategory === 'tutti' || cardCategory === activeCategory;
             var matchesSearch = !query || searchable.indexOf(query) !== -1;
 
             if (matchesCategory && matchesSearch) {
