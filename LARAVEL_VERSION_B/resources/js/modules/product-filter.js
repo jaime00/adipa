@@ -7,11 +7,14 @@ $(function () {
     var debounceTimer = null;
     var hasScrolled = false;
 
-    // Click "Tutti" tab on first search character
+    // Scroll to catalog and click "Tutti" tab on first search character
     $desktopSearch.on('input', function () {
         if ($(this).val() && !hasScrolled) {
             hasScrolled = true;
             $tabs.filter('[data-category="tutti"]').trigger('click');
+            $('html, body').animate({
+                scrollTop: $('#catalogo').offset().top - 80
+            }, 400);
         }
         if (!$(this).val()) {
             hasScrolled = false;
