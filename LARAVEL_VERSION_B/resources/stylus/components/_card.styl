@@ -1,0 +1,27 @@
+.card
+  background-color: $gp-surface
+  border: 1px solid $gp-border
+  border-radius: $radius-xl
+  box-shadow: $shadow-card
+  overflow: hidden
+
+  &--hover
+    transition: box-shadow 0.3s ease
+    &:hover
+      box-shadow: $shadow-card-hover
+
+  &__header
+    padding: 1.5rem 1.5rem 0
+
+  &__title
+    font-size: 1.125rem
+    font-weight: 700
+    color: $gp-text
+
+  &__description
+    font-size: 0.875rem
+    color: $gp-text-light
+    margin-top: 0.25rem
+
+  &__content
+    padding: 1.5rem

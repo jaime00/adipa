@@ -1,0 +1,143 @@
+.hero
+  position: relative
+  background: linear-gradient(to bottom right, $gp-primary-dark, $gp-primary, $gp-primary-light)
+  overflow: hidden
+
+  &__overlay-1
+    position: absolute
+    inset: 0
+    background: radial-gradient(circle at 30% 20%, rgba(14, 165, 233, 0.15), transparent 50%)
+
+  &__overlay-2
+    position: absolute
+    inset: 0
+    background: radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.1), transparent 50%)
+
+  &__container
+    position: relative
+    container()
+    padding-bottom: 2.5rem
+
+  &__content
+    padding-bottom: 2.5rem
+    padding-top: 6rem
+    max-width: 48rem
+
+    +tablet()
+      padding-bottom: 4rem
+      padding-top: 9rem
+
+    +desktop()
+      padding-top: 10rem
+
+  &__title
+    font-weight: 800
+    font-size: 1.75rem
+    line-height: 1.1
+    color: white
+    letter-spacing: -0.02em
+
+    +tablet()
+      font-size: 2.25rem
+
+    +desktop()
+      font-size: 3rem
+
+  &__title-highlight
+    position: relative
+    display: inline
+
+  &__title-highlight-text
+    position: relative
+    z-index: 1
+    color: $gp-accent-light
+
+  &__title-highlight-bg
+    position: absolute
+    bottom: 0.25rem
+    left: 0
+    right: 0
+    height: 0.75rem
+    background-color: rgba($gp-accent, 0.2)
+    transform: skewX(-3deg)
+    border-radius: 0.25rem
+
+  &__title-accent
+    color: $gp-accent-light
+
+  &__description
+    margin-top: 1.5rem
+    font-size: 1rem
+    color: rgba(255, 255, 255, 0.7)
+    max-width: 42rem
+    line-height: 1.6
+
+    +tablet()
+      font-size: 1.125rem
+
+    +desktop()
+      font-size: 1.25rem
+
+  &__actions
+    margin-top: 2.5rem
+    display: flex
+    flex-wrap: wrap
+    gap: 0.75rem
+
+  &__cta-primary
+    background-color: $gp-accent
+    color: white
+    box-shadow: 0 4px 14px rgba($gp-accent, 0.25)
+    &:hover
+      background-color: $gp-accent-light
+
+  &__cta-secondary
+    background-color: white
+    border-color: rgba(255, 255, 255, 0.3)
+    color: $gp-primary
+    backdrop-filter: blur(4px)
+
+  &__stats-box
+    position: relative
+    margin-bottom: 2rem
+    border-radius: 1rem
+    background-color: rgba(255, 255, 255, 0.1)
+    padding: 1.5rem
+    backdrop-filter: blur(12px)
+    border: 1px solid rgba(255, 255, 255, 0.1)
+
+    +tablet()
+      margin-bottom: 3rem
+      padding: 2rem
+
+  &__stats-grid
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+
+  &__stat
+    padding: 0 1rem
+    text-align: center
+    border-right: 1px solid rgba(255, 255, 255, 0.15)
+
+    &:last-child
+      border-right: none
+
+    +tablet()
+      padding: 0 2rem
+
+  &__stat-number
+    font-size: 1.5rem
+    font-weight: 800
+    color: white
+    letter-spacing: -0.02em
+
+    +tablet()
+      font-size: 2.25rem
+
+  &__stat-label
+    margin-top: 0.25rem
+    font-size: 0.75rem
+    color: rgba(255, 255, 255, 0.6)
+
+    +tablet()
+      font-size: 0.875rem

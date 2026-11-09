@@ -31,7 +31,10 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-5">
-            <Logo className="text-white [&>span]:text-gp-accent-light text-2xl" />
+            <Logo
+              className="text-white [&>span]:text-gp-accent-light text-2xl"
+              imgClassName="brightness-0 invert"
+            />
             <p className="text-sm text-white/60 max-w-xs leading-relaxed">
               Leader nella pubblicazione di test psicologici e strumenti di
               valutazione per professionisti della salute mentale dal 1950.

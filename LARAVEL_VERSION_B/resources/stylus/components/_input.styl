@@ -1,0 +1,31 @@
+.input
+  display: block
+  width: 100%
+  height: 2.5rem
+  padding: 0.5rem 0.75rem
+  border: 1px solid $gp-border
+  border-radius: $radius-md
+  background-color: $gp-surface
+  color: $gp-text
+  font-size: 0.875rem
+  transition: border-color 0.2s ease, box-shadow 0.2s ease
+
+  &::placeholder
+    color: $gp-text-light
+
+  &:focus
+    outline: none
+    border-color: $gp-accent
+    box-shadow: 0 0 0 3px rgba($gp-accent, 0.15)
+
+  &--with-icon
+    padding-left: 2rem
+
+  &[aria-invalid="true"]
+    border-color: $gp-error
+
+.textarea
+  @extends .input
+  height: auto
+  min-height: 6rem
+  resize: vertical

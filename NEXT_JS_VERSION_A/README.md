@@ -83,6 +83,10 @@ src/
 | Acento   | #0EA5E9 | Focus rings, highlights |
 | Fondo    | #EFF6FF | Background general      |
 
+## Deploy
+
+Desplegado en **Netlify**: [https://adipa-next.netlify.app/](https://adipa-next.netlify.app/)
+
 ## Supuestos
 
 - Los datos de productos son ficticios y no corresponden a tests reales de Giunti Psychometrics.

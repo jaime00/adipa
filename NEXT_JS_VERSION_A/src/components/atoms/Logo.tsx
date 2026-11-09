@@ -5,9 +5,10 @@ import { cn } from '@/lib/utils'
 
 interface LogoProps {
   className?: string
+  imgClassName?: string
 }
 
-export function Logo({ className }: LogoProps) {
+export function Logo({ className, imgClassName }: LogoProps) {
   return (
     <Link
       href="/"
@@ -19,7 +20,7 @@ export function Logo({ className }: LogoProps) {
         alt="Giunti Psychometrics"
         width={220}
         height={48}
-        className="h-10 w-auto"
+        className={cn('h-10 w-auto', imgClassName)}
         priority
       />
     </Link>
