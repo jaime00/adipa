@@ -80,4 +80,3 @@ const ArrowRightIcon = forwardRef<AnimatedIconHandle, ArrowRightIconProps>(
 ArrowRightIcon.displayName = 'ArrowRightIcon'
 
 export { ArrowRightIcon }
-export type { AnimatedIconHandle as ArrowRightIconHandle }

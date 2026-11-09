@@ -81,4 +81,3 @@ const TwitterIcon = forwardRef<AnimatedIconHandle, TwitterIconProps>(
 TwitterIcon.displayName = 'TwitterIcon'
 
 export { TwitterIcon }
-export type { AnimatedIconHandle as TwitterIconHandle }

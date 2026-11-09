@@ -11,16 +11,13 @@ export function useProductFilter(searchQuery: string) {
   const [activeCategory, setActiveCategory] = useState<CategorySlug>('tutti')
   const [debouncedQuery] = useDebounceValue(searchQuery, 300)
 
-  const effectiveCategory = debouncedQuery.trim() ? 'tutti' : activeCategory
-
   const filteredProducts = useMemo(() => {
     const query = debouncedQuery.toLowerCase().trim()
 
     return products
       .filter((product) => {
         const matchesCategory =
-          effectiveCategory === 'tutti' ||
-          product.category === effectiveCategory
+          activeCategory === 'tutti' || product.category === activeCategory
 
         const matchesSearch =
           !query ||
@@ -36,11 +33,11 @@ export function useProductFilter(searchQuery: string) {
         const bIsBestseller = b.tag === 'Bestseller' ? 0 : 1
         return aIsBestseller - bIsBestseller
       })
-  }, [effectiveCategory, debouncedQuery])
+  }, [activeCategory, debouncedQuery])
 
   return {
     filteredProducts,
-    activeCategory: effectiveCategory,
+    activeCategory,
     setActiveCategory
   }
 }

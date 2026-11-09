@@ -94,4 +94,3 @@ const MapPinIcon = forwardRef<AnimatedIconHandle, MapPinIconProps>(
 MapPinIcon.displayName = 'MapPinIcon'
 
 export { MapPinIcon }
-export type { AnimatedIconHandle as MapPinIconHandle }

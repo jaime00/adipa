@@ -92,4 +92,3 @@ const UserIcon = forwardRef<AnimatedIconHandle, UserIconProps>(
 UserIcon.displayName = 'UserIcon'
 
 export { UserIcon }
-export type { AnimatedIconHandle as UserIconHandle }

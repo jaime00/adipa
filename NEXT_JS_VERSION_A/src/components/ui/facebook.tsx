@@ -81,4 +81,3 @@ const FacebookIcon = forwardRef<AnimatedIconHandle, FacebookIconProps>(
 FacebookIcon.displayName = 'FacebookIcon'
 
 export { FacebookIcon }
-export type { AnimatedIconHandle as FacebookIconHandle }

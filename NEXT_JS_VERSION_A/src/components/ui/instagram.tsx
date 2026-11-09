@@ -111,4 +111,3 @@ const InstagramIcon = forwardRef<AnimatedIconHandle, InstagramIconProps>(
 InstagramIcon.displayName = 'InstagramIcon'
 
 export { InstagramIcon }
-export type { AnimatedIconHandle as InstagramIconHandle }

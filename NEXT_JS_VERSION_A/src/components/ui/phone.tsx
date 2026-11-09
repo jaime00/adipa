@@ -72,4 +72,3 @@ const PhoneIcon = forwardRef<AnimatedIconHandle, PhoneIconProps>(
 PhoneIcon.displayName = 'PhoneIcon'
 
 export { PhoneIcon }
-export type { AnimatedIconHandle as PhoneIconHandle }

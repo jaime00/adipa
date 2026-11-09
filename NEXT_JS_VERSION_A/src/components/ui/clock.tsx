@@ -110,4 +110,3 @@ const ClockIcon = forwardRef<AnimatedIconHandle, ClockIconProps>(
 ClockIcon.displayName = 'ClockIcon'
 
 export { ClockIcon }
-export type { AnimatedIconHandle as ClockIconHandle }

@@ -101,4 +101,3 @@ const MenuIcon = forwardRef<AnimatedIconHandle, MenuIconProps>(
 MenuIcon.displayName = 'MenuIcon'
 
 export { MenuIcon }
-export type { AnimatedIconHandle as MenuIconHandle }

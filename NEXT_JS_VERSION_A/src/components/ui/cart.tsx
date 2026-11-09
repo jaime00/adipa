@@ -70,4 +70,3 @@ const CartIcon = forwardRef<AnimatedIconHandle, CartIconProps>(
 CartIcon.displayName = 'CartIcon'
 
 export { CartIcon }
-export type { AnimatedIconHandle as CartIconHandle }

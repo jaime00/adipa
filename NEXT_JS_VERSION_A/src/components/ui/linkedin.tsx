@@ -108,4 +108,3 @@ const LinkedinIcon = forwardRef<AnimatedIconHandle, LinkedinIconProps>(
 LinkedinIcon.displayName = 'LinkedinIcon'
 
 export { LinkedinIcon }
-export type { AnimatedIconHandle as LinkedinIconHandle }

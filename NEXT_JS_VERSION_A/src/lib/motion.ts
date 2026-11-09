@@ -5,11 +5,6 @@ export const fadeUp: Variants = {
   visible: { opacity: 1, y: 0 }
 }
 
-export const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 }
-}
-
 export const slideLeft: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: { opacity: 1, x: 0 }
@@ -28,11 +23,6 @@ export const springSnappy: Transition = {
 
 export const durationDefault: Transition = {
   duration: 0.5
-}
-
-export const durationSlow: Transition = {
-  duration: 0.7,
-  ease: 'easeOut'
 }
 
 export const viewportOnce = { once: true, margin: '-100px' } as const
