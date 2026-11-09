@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Extensions.tokenizer", "php82Extensions.dom", "php82Extensions.xml", "php82Extensions.mbstring", "php82Extensions.curl", "php82Extensions.openssl", "php82Extensions.fileinfo", "nodejs_18"]
+nixPkgs = ["php83", "nodejs_18"]
 
 [phases.install]
 cmds = ["composer install --no-dev --optimize-autoloader", "npm install"]
