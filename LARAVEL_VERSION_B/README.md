@@ -1,66 +1,141 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Giunti Psychometrics — Landing Page (Version B: Laravel)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Landing page de catálogo de productos psicométricos para Giunti Psychometrics Italia, construida con Laravel 9, Blade, Stylus, jQuery y Laravel Mix.
 
-## About Laravel
+## Requisitos previos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **PHP** >= 8.0.2
+- **Composer** >= 2.x
+- **Node.js** >= 16.x
+- **npm** >= 8.x
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Instalación
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```bash
+# Clonar el repositorio e ingresar al directorio
+cd LARAVEL_VERSION_B
 
-## Learning Laravel
+# Instalar dependencias PHP
+composer install
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Instalar dependencias Node
+npm install
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# Configurar entorno
+cp .env.example .env
+php artisan key:generate
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Comandos
 
-## Laravel Sponsors
+```bash
+# Servidor de desarrollo
+php artisan serve          # http://localhost:8000
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# Build de assets (desarrollo)
+npm run dev
 
-### Premium Partners
+# Build de assets (watch mode)
+npm run watch
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+# Build de assets (producción, minificado)
+npm run prod
 
-## Contributing
+# Tests
+php artisan test
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Stack técnico
 
-## Code of Conduct
+| Componente | Tecnología |
+|-----------|-----------|
+| Framework | Laravel 9 |
+| Templates | Blade (layouts + sections + partials) |
+| Preprocesador CSS | Stylus |
+| Nomenclatura CSS | BEM (Block Element Modifier) |
+| Interactividad | jQuery 3.7 |
+| Build tool | Laravel Mix 6 (Webpack 5) |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Estructura del proyecto
 
-## Security Vulnerabilities
+```
+resources/
+├── views/
+│   ├── layouts/app.blade.php        # Layout principal (lang="it")
+│   ├── landing.blade.php            # Página principal
+│   ├── sections/                    # Secciones de la landing
+│   │   ├── header.blade.php
+│   │   ├── hero.blade.php
+│   │   ├── product-grid.blade.php
+│   │   ├── contact-form.blade.php
+│   │   └── footer.blade.php
+│   └── partials/                    # Componentes reutilizables
+│       ├── logo.blade.php
+│       ├── section-header.blade.php
+│       ├── product-card.blade.php
+│       ├── social-links.blade.php
+│       └── toast.blade.php
+├── stylus/
+│   ├── app.styl                     # Entry point
+│   ├── _variables.styl              # Design tokens
+│   ├── _mixins.styl                 # Mixins responsive
+│   ├── _base.styl                   # Reset y estilos globales
+│   ├── components/                  # UI reutilizable (button, badge, card, tabs...)
+│   └── sections/                    # Estilos por sección
+└── js/
+    ├── app.js                       # Entry point
+    └── modules/                     # Módulos jQuery
+        ├── product-filter.js        # Filtrado por categoría y búsqueda
+        ├── contact-form.js          # Validación client-side
+        ├── mobile-menu.js           # Menú responsive
+        ├── smooth-scroll.js         # Scroll suave a secciones
+        ├── scroll-progress.js       # Barra de progreso
+        ├── nav-active.js            # Highlight de sección activa
+        └── count-up.js              # Animación de números en hero
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Datos
 
-## License
+Los productos se definen en `config/products.php` (9 productos ficticios en 4 categorías). No se usa base de datos. Los precios se almacenan en centavos y se formatean con locale italiano mediante el helper `formatPrice()` en `app/Helpers/format.php`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Categorías:** Clinica e Neuropsicologia, Scuola ed Età Evolutiva, Lavoro e Organizzazioni, Formazione.
+
+## Diseño responsive
+
+- **Mobile:** 375px (1 columna, menú hamburguesa)
+- **Tablet:** 768px (2 columnas)
+- **Desktop:** 1280px+ (3 columnas)
+
+## Accesibilidad (WCAG 2.1 AA)
+
+- HTML semántico (`<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`)
+- Atributos ARIA en formularios, tabs y navegación
+- Navegación completa por teclado (focus-visible, Escape para cerrar menú)
+- Textos alternativos en todas las imágenes
+- Contraste suficiente entre texto y fondo
+
+## Identidad visual
+
+| Token | Valor |
+|-------|-------|
+| Primario | `#1B4F8A` |
+| Texto | `#0F2D52` |
+| Acento | `#0EA5E9` |
+| Fondo | `#EFF6FF` |
+
+## Supuestos y decisiones
+
+- **Sin backend real para el formulario:** el envío se simula client-side con un toast de confirmación.
+- **Imágenes de Unsplash:** se usan como placeholder para productos.
+- **Nombres ficticios:** todos los tests, autores y cursos son inventados para evitar material protegido.
+- **Laravel Mix sobre Vite:** se eligió Mix por compatibilidad con Stylus y el requisito de la prueba (Gulp o Laravel Mix).
+- **Scroll progress bar y animaciones count-up:** mejoras adicionales para enriquecer la experiencia de usuario.
+- **Mapa en footer:** se incluyó un iframe de Google Maps como elemento visual adicional.
+
+## Mejoras propuestas
+
+- Envío real del formulario de contacto vía backend (SMTP o API)
+- Páginas de detalle por producto
+- Carrito de compras con persistencia en localStorage
+- Paginación o infinite scroll para catálogos grandes
+- Tests E2E con Cypress o Playwright
